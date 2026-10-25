@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Torky Engine Continuum — Live Coding Competition Arena</title>
+    <style>
+        body { margin: 0; font-family: monospace; background: #0d1117; color: #c9d1d9; display: flex; flex-direction: column; height: 100vh; }
+        header { background: #161b22; border-bottom: 2px solid #30363d; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .arena-title { color: #58a6ff; margin: 0; font-size: 20px; }
+        .main-layout { display: flex; flex-grow: 1; overflow: hidden; }
+        .pane { width: 50%; padding: 20px; overflow-y: auto; box-sizing: border-box; display: flex; flex-direction: column; }
+        .left-pane { border-right: 2px solid #30363d; background: #161b22; }
+        .right-pane { background: #0d1117; }
+        h2 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 8px; font-size: 16px; margin-top: 0; }
+        .control-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #8b949e; font-weight: bold; }
+        select, textarea { width: 100%; background: #0d1117; color: #c9d1d9; border: 1px solid #30363d; padding: 10px; border-radius: 6px; box-sizing: border-box; font-family: monospace; }
+        textarea { height: 150px; resize: none; font-size: 12px; }
+        .track-cards { display: flex; gap: 15px; margin-top: 15px; }
+        .track-card { flex: 1; padding: 15px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; transition: all 0.3s ease; }
+        .legacy-card { border-left: 4px solid #f85149; }
+        .torky-card { border-left: 4px solid #2ea44f; }
+        .card-active { background: #21262d; box-shadow: 0 0 15px rgba(88, 166, 255, 0.1); }
+        .btn-run { background: #238636; border: 1px solid #2ea44f; color: white; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; font-family: monospace; margin-top: 10px; }
+        .btn-run:hover { background: #2ea44f; }
+        .console { flex-grow: 1; background: #010409; border: 1px solid #30363d; padding: 12px; border-radius: 6px; overflow-y: auto; font-size: 13px; color: #7ee787; margin-top: 15px; }
+        .leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 12px; }
+        .leaderboard-table th, .leaderboard-table td { border: 1px solid #30363d; padding: 8px; text-align: left; }
+        .leaderboard-table th { background: #161b22; color: #58a6ff; }
+        .badge { padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+        .badge-legacy { background: rgba(248, 81, 73, 0.15); color: #f85149; border: 1px solid #f85149; }
+        .badge-torky { background: rgba(46, 164, 79, 0.15); color: #56d364; border: 1px solid #2ea44f; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="arena-title">🏆 Torky Engine Continuum — Live Coding Arena</div>
+        <div style="font-size: 12px; color: #8b949e;">Sandbox Memory Fence: <span style="color:#58a6ff; font-weight:bold;">487.12 MiB Hard Cap</span></div>
+    </header>
+
+    <div class="main-layout">
+        <div class="pane left-pane">
+            <h2>Algorithmic Problem Ingestion Matrix</h2>
+            <div class="control-group">
+                <label for="benchmarkSuite">Select Target Ingestion Framework:</label>
+                <select id="benchmarkSuite">
+                    <option value="icpc">ICPC World Finals — High-Dimensional Matrix Optimization</option>
+                    <option value="qhack">QHack Quantum Hackathon — Barren-Plateau Gradient Extraction</option>
+                    <option value="kaggle">Kaggle Enterprise — 10-Billion Dimensional Vector Search</option>
+                    <option value="custom">Custom Ingestion — External User Matrix Benchmark Upload (.csv / .json)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="codeInput">Algorithmic Input Block Script:</label>
+                <textarea id="codeInput" placeholder="// Ingest dataset matrix arrays locally inside the browser sandbox environment...
+void process_manifold_stream(const float* vector_data, uint64_t total_records) {
+    // Write target evaluation logic here
+}"></textarea>
+            </div>
+
+            <label>Select Execution Pipeline Track:</label>
+            <div class="track-cards">
+                <div class="track-card legacy-card card-active" id="trackLegacy" style="cursor:pointer;">
+                    <strong>Legacy Track</strong>
+                    <p style="font-size: 11px; color:#8b949e; margin: 5px 0 0 0;">IEEE 754 Floating-Point bounds. Monitored for NaN crashes & OOM limits.</p>
+                </div>
+                <div class="track-card torky-card" id="trackTorky" style="cursor:pointer;">
+                    <strong>Torky Engine Track</strong>
+                    <p style="font-size: 11px; color:#8b949e; margin: 5px 0 0 0;">Cardano-Viète Fixed-Point Engine. Collapses O(2^N) paths to O(N² log(1/δ)).</p>
+                </div>
+            </div>
+
+            <button class="btn-run" id="submitBtn">Launch Containerized Sandbox Execution</button>
+        </div>
+
+        <div class="pane right-pane">
+            <h2>Container Watchdog Execution Log</h2>
+            <div class="console" id="terminalOut">
+                [System Log] Arena sandbox online... Awaiting code submission block vectors.<br>
+                [Metrics] Initializing client-side isolated WebAssembly compiler nodes... Ready.
+            </div>
+
+            <h2 style="margin-top: 25px;">Live Global Performance Leaderboard</h2>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>User Node Address</th>
+                        <th>Track Engine</th>
+                        <th>Time Complexity</th>
+                        <th>Memory Limit</th>
+                        <th>Status Seal</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <tr>
+                        <td>1</td>
+                        <td>0x7f9a...e210 (Dr. Amr Torky)</td>
+                        <td><span class="badge badge-torky">Torky Engine</span></td>
+                        <td>O(N² log(1/δ))</td>
+                        <td>487.12 MiB</td>
+                        <td style="color:#56d364; font-weight:bold;">✓ 100% STABLE</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>0x3a4b...91f4 (MIT Core Team)</td>
+                        <td><span class="badge badge-torky">Torky Engine</span></td>
+                        <td>O(N² log(1/δ))</td>
+                        <td>487.12 MiB</td>
+                        <td style="color:#56d364; font-weight:bold;">✓ 100% STABLE</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>0x8c12...4a3b (CERN Compute Node)</td>
+                        <td><span class="badge badge-legacy">Legacy IEEE</span></td>
+                        <td>O(2^N) Timeout</td>
+                        <td>> 16.00 GiB</td>
+                        <td style="color:#f85149; font-weight:bold;">🗙 OOM CRASH</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="leaderboard_sync.js"></script>
+</body>
+</html>

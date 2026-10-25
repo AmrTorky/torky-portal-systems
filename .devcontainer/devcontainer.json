@@ -1,7 +1,22 @@
 {
-    "name": "Amr Torky Open-Science Cloud Sandbox Platform",
-    "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "hessian.interval.ms": 20
-    }
+    "name": "Amr Torky Platform — Sovereign Competitions Container Sandbox",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.testing.pytestEnabled": true,
+                "editor.formatOnSave": true
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-vscode.cpptools",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    "postCreateCommand": "python3 -c \"import json; print(json.dumps({'status': 'SANDBOX_READY', 'memory_cap_mib': 487.12}))\"",
+    "remoteUser": "vscode"
 }

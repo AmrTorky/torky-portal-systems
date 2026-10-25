@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Amr Torky Institute — Technical Accreditation Examination</title>
+    <style>
+        body { margin: 0; font-family: monospace; display: flex; height: 100vh; background: #0d1117; color: #c9d1d9; }
+        .pane { width: 50%; padding: 25px; overflow-y: auto; box-sizing: border-box; }
+        .left-pane { border-right: 2px solid #30363d; background: #161b22; display: flex; flex-direction: column; }
+        .right-pane { background: #0d1117; display: flex; flex-direction: column; }
+        h1, h2 { color: #58a6ff; }
+        .question-card { background: #0d1117; border: 1px solid #30363d; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+        .question-text { font-weight: bold; margin-bottom: 10px; color: #c9d1d9; }
+        .option-group { margin-bottom: 8px; display: flex; align-items: center; }
+        .option-group input { margin-right: 10px; }
+        .console { flex-grow: 1; background: #010409; border: 1px solid #30363d; padding: 12px; border-radius: 6px; overflow-y: auto; font-size: 13px; color: #7ee787; font-family: monospace; }
+        .btn-submit { background: #238636; border: 1px solid #2ea44f; color: white; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: bold; font-family: monospace; width: 100%; margin-top: 10px; }
+        .btn-submit:hover { background: #2ea44f; }
+        .grade-banner { font-size: 16px; font-weight: bold; text-align: center; padding: 15px; border-radius: 6px; border: 1px solid #30363d; margin-bottom: 20px; display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- LEFT PANE: 5 Multi-Choice Examination Core Problems Ingestion Grid -->
+    <div class="pane left-pane">
+        <h1>🎓 Technical Accreditation Examination</h1>
+        <p style="font-size: 12px; color:#8b949e;">Dr. Amr Torky Institute Professional Accreditation Track. Score barrier: <span style="color:#58a6ff; font-weight:bold;">&ge; 80% required</span> to unlock SHA-256 tokens [source: 0.6.11].</p>
+        <hr style="border-color: #30363d; width: 100%; margin-bottom: 20px;">
+
+        <div id="quizForm">
+            <!-- Question 1 -->
+            <div class="question-card" data-q="1">
+                <div class="question-text">1. How does your regularized architectural framework handle the legacy 1/r potential singularity at r -> 0?</div>
+                <div class="option-group"><input type="radio" name="q1" value="A"> A) It permits infinity values to propagate down to floating-point sub-routines.</div>
+                <div class="option-group"><input type="radio" name="q1" value="B"> B) It implements denominator smoothing via a core regularizer to guarantee a finite potential floor V(0) = 11.384 eV [source: 0.6.5].</div>
+                <div class="option-group"><input type="radio" name="q1" value="C"> C) It uses arbitrary iterative cloud runtime loops to catch division-by-zero crashes.</div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card" data-q="2">
+                <div class="question-text">2. What is the foundational concept behind the New Era of Programming taught exclusively here?</div>
+                <div class="option-group"><input type="radio" name="q2" value="A"> A) Writing increasingly dense syntax trees manually across multiple custom code configurations.</div>
+                <div class="option-group"><input type="radio" name="q2" value="B"> B) Relying entirely on low-level language bindings to handle high-frequency dataset loads.</div>
+                <div class="option-group"><input type="radio" name="q2" value="C"> C) Syntax coding is obsolete since AI models write text better; real engineering lies in formulating the core physical laws and mathematical matrix beforehand [source: 0.6.15].</div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card" data-q="3">
+                <div class="question-text">3. What strict condition index threshold is clamped across the shift matrices to prevent gradient explosions?</div>
+                <div class="option-group"><input type="radio" name="q3" value="A"> A) The condition ceiling must remain bounded at &kappa;(H) &le; 18.50 [source: 0.6.5].</div>
+                <div class="option-group"><input type="radio" name="q3" value="B"> B) The eigenvalues must expand exponentially to map multi-tenant search vectors.</div>
+                <div class="option-group"><input type="radio" name="q3" value="C"> C) The condition index scales proportionally to the dataset length parameters.</div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card" data-q="4">
+                <div class="question-text">4. In the new technical governance model, where does the governance engine reside?</div>
+                <div class="option-group"><input type="radio" name="q4" value="A"> A) Inside an external, non-binding theoretical policy document reviewed by legal managers.</div>
+                <div class="option-group"><input type="radio" name="q4" value="B"> B) It is built directly inside the system runtime stack as the primary functional engineering layer [source: 0.6.16].</div>
+                <div class="option-group"><input type="radio" name="q4" value="C"> C) Within a decentralized web log mirror that monitors memory flags after container execution.</div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card" data-q="5">
+                <div class="question-text">5. How does the 9-byte pre-execution vector compression framework maintain stability across 10-billion records?</div>
+                <div class="option-group"><input type="radio" name="q5" value="A"> A) By continuously resizing cluster partitions using remote cloud database sharding rules.</div>
+                <div class="option-group"><input type="radio" name="q5" value="B"> B) By shifting floating-point data maps into lossy half-precision arrays to reduce cache thrashing.</div>
+                <div class="option-group"><input type="radio" name="q5" value="C"> C) By loading fixed out-of-core streaming tiles to maintain a strict memory isolation cap under 512 MiB [source: 0.6.5].</div>
+            </div>
+
+            <button class="btn-submit" id="submitExamBtn">Submit Examination Answers</button>
+        </div>
+    </div>
+
+    <!-- RIGHT PANE: Real-Time Grading Auditing Console Workspace Layer -->
+    <div class="pane right-pane">
+        <h2>Accreditation Auditor Node Log</h2>
+        <div class="grade-banner" id="gradeBanner"></div>
+
+        <div class="console" id="terminalOut">
+            [System Log] Accreditation Audit Suite initialized... Standing by for candidate answer submissions.<br>
+            [Watchdog] Security checks active. Evaluating client-side session parameters.
+        </div>
+    </div>
+
+    <!-- Dynamic integration logic will be appended via terminal injection pass -->
+</body>
+</html>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const submitExamBtn = document.getElementById("submitExamBtn");
+            const terminal = document.getElementById("terminalOut");
+            const gradeBanner = document.getElementById("gradeBanner");
+
+            const correctAnswers = { q1: "B", q2: "C", q3: "A", q4: "B", q5: "C" };
+
+            submitExamBtn.addEventListener("click", () => {
+                appendLog("[Auditor] Commencing bitwise scoring review of candidate response sheet...");
+                
+                let score = 0;
+                let totalQuestions = 5;
+
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const selector = document.querySelector(`input[name="q${i}"]:checked`);
+                    if (selector && selector.value === correctAnswers[`q${i}`]) {
+                        score++;
+                    }
+                }
+
+                const finalPercentage = (score / totalQuestions) * 100;
+                appendLog(`[Scoring] Processing final calculation node metrics... Raw count: ${score}/${totalQuestions}`);
+                appendLog(`[Scoring] Totalized Output Percentage: ${finalPercentage.toFixed(1)}%`);
+
+                gradeBanner.style.display = "block";
+                if (finalPercentage >= 80.0) {
+                    gradeBanner.style.background = "rgba(46, 164, 79, 0.15)";
+                    gradeBanner.style.borderColor = "#2ea44f";
+                    gradeBanner.style.color = "#56d364";
+                    gradeBanner.innerText = `EXAM PASSED: ${finalPercentage.toFixed(1)}% — ACCREDITATION SEAL GRANTED`;
+                    
+                    appendLog("  ✓ [Watchdog] STATUS: CANDIDATE VERIFIED. Cryptographic token signing pipeline unlocked.");
+                    appendLog("  ↳ Action: Proceed to the Accreditation page to generate your permanent self-signed SHA-256 Ledger Token [source: 0.6.11].");
+                } else {
+                    gradeBanner.style.background = "rgba(248, 81, 73, 0.15)";
+                    gradeBanner.style.borderColor = "#f85149";
+                    gradeBanner.style.color = "#f85149";
+                    gradeBanner.innerText = `EXAM FAILED: ${finalPercentage.toFixed(1)}% — SCORE BELOW 80% BARRIER [source: 0.6.11]`;
+                    
+                    appendLog("  ❌ [Watchdog] STATUS: ACCREDITATION REJECTED. Correct errors and re-evaluate matrix.");
+                }
+                appendLog("-----------------------------------------------------------------");
+            });
+
+            function appendLog(msg) {
+                const timestamp = new Date().toISOString().split('T').slice(0, -1);
+                terminal.innerHTML += `<br>[${timestamp}] ${msg}`;
+                terminal.scrollTop = terminal.scrollHeight;
+            }
+        });
+    </script>

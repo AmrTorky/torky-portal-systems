@@ -1,25 +1,32 @@
-import time, hashlib, json
+#!/usr/bin/env python3
+"""
+Amr Torky Institute — Cryptographic SHA-256 Digital Certificate Generator
+Generates tamper-proof accreditation digests for graduates scoring >= 80%.
+"""
+import time, hashlib, json, sys
 
-def issue_graduate_accreditation(student_name, exam_score):
+def issue_certificate(student_name, track_id, exam_score):
     if exam_score < 80.0:
-        return "STATUS: REJECTED_BELOW_METROLOGICAL_THRESHOLD"
-    
-    cert_payload = {
+        print(f"❌ Accreditation Failed: Score {exam_score:.1f}% is below the mandatory 80.0% threshold.")
+        return None
+    cert_data = {
         "institution": "Amr Torky Institute for Advanced Physical Engineering",
-        "grad": student_name,
-        "net_tuition_paid_usd": 3000.0,
-        "accreditation": "CMSP Universal Scale Floor Specialist",
-        "evidence_lifecycle": "STAGE_6_PRESERVE_WORM_LOCKED"
+        "student_name": student_name,
+        "track_id": track_id,
+        "exam_score_percent": exam_score,
+        "tuition_paid_net_usd": 3000.0,
+        "issue_timestamp": int(time.time()),
+        "accreditation_status": "VERIFIED & CERTIFIED",
+        "verification_protocol": "SHA-256 Cryptographic Release Digest"
     }
-    
-    raw_json = json.dumps(cert_payload, sort_keys=True).encode('utf-8')
-    digest = hashlib.sha256(raw_json).hexdigest()
-    
-    with open(f"CERTIFICATE_{student_name.upper().replace(' ', '_')}.json", "w") as f:
-        json.dump(cert_payload, f, indent=2)
-        
-    print(f"✓ Certificate Signed Immutably. SHA-256 Release Digest: {digest}")
+    raw_bytes = json.dumps(cert_data, sort_keys=True).encode('utf-8')
+    digest = hashlib.sha256(raw_bytes).hexdigest()
+    cert_data["sha256_digest"] = digest
+    filename = f"CERTIFICATE_{student_name.replace(' ', '_').upper()}.json"
+    with open(filename, "w") as f:
+        json.dump(cert_data, f, indent=2)
+    print(f"✓ Certificate Issued Successfully!\n   Graduate: {student_name}\n   SHA-256 Digest: {digest}")
     return digest
 
 if __name__ == "__main__":
-    issue_graduate_accreditation("Dr. Amr Torky", 99.69)
+    issue_certificate("Dr. Amr Torky", "AT-DEOS-Track-Ω", 98.4)

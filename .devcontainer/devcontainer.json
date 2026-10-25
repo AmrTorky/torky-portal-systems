@@ -1,22 +1,22 @@
 {
-    "name": "Amr Torky Platform — Sovereign Competitions Container Sandbox",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "python.testing.pytestEnabled": true,
-                "editor.formatOnSave": true
-            },
-            "extensions": [
-                "ms-python.python",
-                "ms-vscode.cpptools",
-                "ms-azuretools.vscode-docker"
-            ]
-        }
-    },
-    "postCreateCommand": "python3 -c \"import json; print(json.dumps({'status': 'SANDBOX_READY', 'memory_cap_mib': 487.12}))\"",
-    "remoteUser": "vscode"
+  "name": "Amr Torky Institute Sovereign Development Sandbox",
+  "image": "://microsoft.com",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.10",
+      "installTools": true
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-vscode.azure-account"
+      ]
+    }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y emscripten build-essential python3-pip && pip3 install numpy scipy",
+  "remoteUser": "vscode"
 }

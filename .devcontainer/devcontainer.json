@@ -1,4 +1,7 @@
 {
-    "name": "Amr Torky Open-Science Cloud Sandbox",
-    "settings": { "python.defaultInterpreterPath": "/usr/local/bin/python" }
+    "name": "Amr Torky Open-Science Cloud Sandbox Platform",
+    "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "hessian.interval.ms": 20
+    }
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Amr Torky Institute — Cryptographic Attestation Ledger</title>
+    <style>
+        body { margin: 0; font-family: monospace; background: #0d1117; color: #c9d1d9; display: flex; flex-direction: column; height: 100vh; }
+        header { background: #161b22; border-bottom: 2px solid #30363d; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .title { color: #58a6ff; margin: 0; font-size: 18px; font-weight: bold; }
+        .main-container { display: flex; flex-grow: 1; overflow: hidden; }
+        .pane { width: 50%; padding: 25px; overflow-y: auto; box-sizing: border-box; display: flex; flex-direction: column; }
+        .left-pane { border-right: 2px solid #30363d; background: #161b22; }
+        .right-pane { background: #0d1117; }
+        h2 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 8px; font-size: 15px; margin-top: 0; }
+        .control-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #8b949e; font-weight: bold; }
+        input[type="text"], select { width: 100%; background: #0d1117; color: #c9d1d9; border: 1px solid #30363d; padding: 10px; border-radius: 6px; box-sizing: border-box; font-family: monospace; }
+        .btn-crypt { background: #238636; border: 1px solid #2ea44f; color: white; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; font-family: monospace; margin-top: 10px; }
+        .btn-crypt:hover { background: #2ea44f; }
+        .certificate-frame { width: 100%; border: 2px dashed #30363d; border-radius: 8px; background: #010409; padding: 20px; box-sizing: border-box; line-height: 1.6; font-size: 12px; position: relative; color: #8b949e; }
+        .certified-glow { border-color: #56d364; box-shadow: 0 0 20px rgba(46, 164, 79, 0.15); }
+        .hash-seal { background: #161b22; border: 1px solid #30363d; padding: 10px; border-radius: 4px; color: #7ee787; font-size: 11px; overflow-x: auto; white-space: nowrap; margin-top: 10px; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="title">🔐 Cryptographic Attestation Token Engine</div>
+        <div style="font-size: 12px; color: #8b949e;">Governance Layer: <span style="color:#58a6ff; font-weight:bold;">Hard Ceiling Enforced</span></div>
+    </header>
+
+    <div class="main-container">
+        <!-- LEFT PANE: Candidate Metadata Entry Matrix -->
+        <div class="pane left-pane">
+            <h2>Accreditation Profile Parameters</h2>
+            
+            <div class="control-group">
+                <label for="studentName">Candidate Full Name Registry:</label>
+                <input type="text" id="studentName" placeholder="Enter formal legal name for token signing...">
+            </div>
+
+            <div class="control-group">
+                <label for="targetSpec">Select Target Core Specialization Track:</label>
+                <select id="targetSpec">
+                    <option value="CMSP">Certified Master Scale Practitioner (Weeks 01–06 Base)</option>
+                    <option value="QPUM">Superconducting QPU Matrix Stabilization Engineer</option>
+                    <option value="VASN">Non-Singular VASP DFT Electronic Structure Analyst</option>
+                    <option value="ASIG">AI Infrastructure & Sovereign Governance Principal Architect</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="scoreEntry">Verified Examination Output Percentage (Min 80%):</label>
+                <input type="text" id="scoreEntry" placeholder="e.g. 88.5">
+            </div>
+
+            <button class="btn-crypt" id="generateTokenBtn">Generate Self-Signed SHA-256 Ledger Token</button>
+        </div>
+
+        <!-- RIGHT PANE: Self-Signed Cryptographic Attestation Pass Display Canvas -->
+        <div class="pane right-pane">
+            <h2>Distributed Certificate Ledger Attestation Pass</h2>
+            
+            <div class="certificate-frame" id="certFrame">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <span style="font-size: 16px; font-weight: bold; color: #58a6ff;">THE AMR TORKY INSTITUTE</span><br>
+                    <span style="font-size: 10px; letter-spacing: 2px;">SOVEREIGN TECHNICAL ACCREDITATION MATRIX</span>
+                </div>
+                <hr style="border-color: #30363d;">
+                
+                <p>Status: <span id="certStatus" style="color:#f85149; font-weight:bold;">AWAITING ACTIVE EVALUATION PASSHOLD</span></p>
+                <p>Candidate Handle: <span id="displayHolder" style="color:#c9d1d9;">___________________________</span></p>
+                <p>Assigned Track: <span id="displayTrack" style="color:#c9d1d9;">___________________________</span></p>
+                <p>Condition Index Bound: <span style="color:#c9d1d9;">κ(H_shifted) &le; 18.50 Guaranteed</span></p>
+                
+                <div id="hashWrapper" style="display: none;">
+                    <strong>Immutable SHA-256 Ledger Digest:</strong>
+                    <div class="hash-seal" id="digestDisplay">GENERATING...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="attestation_runtime.js"></script>
+</body>
+</html>

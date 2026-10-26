@@ -4,8 +4,8 @@
   "track_id": "AT-DEOS-Track-\u03a9",
   "exam_score_percent": 98.4,
   "tuition_paid_net_usd": 3000.0,
-  "issue_timestamp": 1792953312,
+  "issue_timestamp": 1792962001,
   "accreditation_status": "VERIFIED & CERTIFIED",
   "verification_protocol": "SHA-256 Cryptographic Release Digest",
-  "sha256_digest": "d6f9b7d15ae7bd255233da05d564a6ec8438b76bcdf275f883c1079ad730d676"
+  "sha256_digest": "3f60b5694b3c1da0dace1e6d5fac0fd060f350d950aca8898da1bb510ab19e95"
 }
